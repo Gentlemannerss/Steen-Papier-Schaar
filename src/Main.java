@@ -39,23 +39,24 @@ public class Main {
                     System.out.println("Invalid input. Please try again.");
                 }
             }
-            int random = rand.nextInt(0,2);   // Change the bound so that the computer wins more often. It will get a bigger range of choices, and increase the probability of the computer winning.
-            String computerInput = choices[random];
-            System.out.println("The computer choice is: " + computerInput);
+            /*int random = rand.nextInt(0,2);
+            String computerInput = choices[random]; */
 
-            /*String computerInput;
-            if (computerScore < playerScore - 2) {
+            String computerInput;
+            if (computerScore <= playerScore - 2) {
                 // Computer is cheating
-                computerInput = choices[rand.nextInt(2)];
+                computerInput = choices[rand.nextInt(3)];
+                /* Verliezende optie laten weghalen, en dan kijken of hij nog kan winnen of gelijk kan spelen. (bound maar 1 van de 2)*/
             } else {
                 // Computer is playing fairly
-                computerInput = choices[rand.nextInt(4)];
-            }*/
+                computerInput = choices[rand.nextInt(3)];
+            }
+            System.out.println("The computer choice is: " + computerInput);
 
             if (computerInput.equals("schaar") && userInput.equals("steen") /*&& rand.nextDouble() < 0.8*/) { //This makes it that the player will only win 20% of the time.
                 System.out.println("Jij hebt gewonnen!");
                 playerScore++;
-            } else if (computerInput.equals("papier") && userInput.equals("schaar")) {
+            } else if (computerInput.equals("papier") && userInput.equals("schaar") /* || Make it that all wins are in the same statement.*/) {
                 System.out.println("Jij hebt gewonnen!");
                 playerScore++;
             } else if (computerInput.equals("steen") && userInput.equals("papier")) {
