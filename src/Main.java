@@ -15,6 +15,9 @@ public class Main {
         Random rand = new Random();
 
         boolean runAgain = true;
+        int playerScore = 0;
+        int computerScore = 0;
+
         while (runAgain) {
             String[] choices = {"steen", "papier", "schaar"};
             System.out.println("Voer hier je keuze in, steen, papier of schaar.");
@@ -36,25 +39,41 @@ public class Main {
                     System.out.println("Invalid input. Please try again.");
                 }
             }
-            int random = rand.nextInt(2);
+            int random = rand.nextInt(0,2);   // Change the bound so that the computer wins more often. It will get a bigger range of choices, and increase the probability of the computer winning.
             String computerInput = choices[random];
             System.out.println("The computer choice is: " + computerInput);
 
-            if (computerInput.equals("schaar") && userInput.equals("steen")) {
+            /*String computerInput;
+            if (computerScore < playerScore - 2) {
+                // Computer is cheating
+                computerInput = choices[rand.nextInt(2)];
+            } else {
+                // Computer is playing fairly
+                computerInput = choices[rand.nextInt(4)];
+            }*/
+
+            if (computerInput.equals("schaar") && userInput.equals("steen") /*&& rand.nextDouble() < 0.8*/) { //This makes it that the player will only win 20% of the time.
                 System.out.println("Jij hebt gewonnen!");
+                playerScore++;
             } else if (computerInput.equals("papier") && userInput.equals("schaar")) {
                 System.out.println("Jij hebt gewonnen!");
+                playerScore++;
             } else if (computerInput.equals("steen") && userInput.equals("papier")) {
                 System.out.println("Jij hebt gewonnen!");
+                playerScore++;
             } else if (computerInput.equals("steen") && userInput.equals("schaar")) {
                 System.out.println("Je hebt verloren.");
+                computerScore++;
             } else if (computerInput.equals("papier") && userInput.equals("steen")) {
                 System.out.println("Je hebt verloren.");
+                computerScore++;
             } else if (computerInput.equals("schaar") && userInput.equals("papier")) {
                 System.out.println("Je hebt verloren.");
+                computerScore++;
             } else {
                 System.out.println("It's a draw.");
             }
+            System.out.println("You're score is: " + playerScore + " versus " + computerScore + " of the computer.");
             runAgain = systemRunAgain(scanner);
         }
     }
