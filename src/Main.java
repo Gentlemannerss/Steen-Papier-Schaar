@@ -79,7 +79,7 @@ public class Main {
                 System.out.println("Je hebt verloren.");
                 computerScore++;
             } else if (userInput.equals("spock")) {
-                System.out.println("Jij hebt gewonnen!");
+                System.out.println("Je hebt het magische woord gevonden.");
                 playerScore++;
             } else {
                 System.out.println("It's a draw.");
